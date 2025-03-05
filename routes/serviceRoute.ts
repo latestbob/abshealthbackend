@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import isAuthenticated from '../middlewares/authenticated';
 import { createService } from '../controllers/serviceController';
+import { validateService } from '../middlewares/serviceMiddleware';
 
 
 
@@ -11,7 +12,7 @@ const serviceRouter = Router();
 
 // register a user
 
-serviceRouter.post('/create',  createService);
+serviceRouter.post('/create', validateService, createService);
 
 // //get all appointments
 
